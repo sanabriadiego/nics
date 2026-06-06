@@ -11,13 +11,13 @@ export const routes: Routes = [
         path: 'products',
         loadComponent: () =>
         import('./features/products/pages/products-page/products-page')
-            .then(m => m.ProductsPage)
+            .then(m => m.ProductsPageComponent)
     },
     {
         path: 'favorites',
         loadComponent: () =>
         import('./features/favorites/pages/favorites-page/favorites-page')
-            .then(m => m.FavoritesPage)
+            .then(m => m.FavoritesPageComponent)
     },
     {
         path: 'contact',

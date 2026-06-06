@@ -1,1 +1,19 @@
-<p>products-page works!</p>
+<!-- <h1>Productos</h1> -->
+
+<!-- @if (productStore.loading()) {
+  <p>Cargando...</p>
+}
+
+@if (productStore.error()) {
+  <p>{{ productStore.error() }}</p>
+} -->
+
+<h1>Productos</h1>
+
+@for (product of productStore.products(); track product.id) {
+  <app-product-card
+    [product]="product"
+    [isFavorite]="favoriteStore.isFavorite(product.id)"
+    (favorite)="toggleFavorite($event)"
+  />
+}

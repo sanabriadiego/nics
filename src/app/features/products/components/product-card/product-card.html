@@ -1,0 +1,12 @@
+<p>product-card works!</p>
+<article class="product-card">
+  <img [src]="product().imageUrl" [alt]="product().name">
+
+  <h3>{{ product().name }}</h3>
+  <p>{{ product().description }}</p>
+  <strong>{{ product().price }} Bs</strong>
+
+<button type="button" (click)="onToggleFavorite()">
+  {{ isFavorite() ? 'Quitar de favoritos' : 'Agregar a favoritos' }}
+</button>
+</article>

@@ -1,9 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject, OnInit } from '@angular/core';
+import { ProductCardComponent } from '../../../products/components/product-card/product-card';
+import { ProductStore } from '../../../products/store/product.store';
+import { FavoriteStore } from '../../store/favorite.store/favorite.store';
 
 @Component({
   selector: 'app-favorites-page',
-  imports: [],
+  standalone: true,
+  imports: [ProductCardComponent],
   templateUrl: './favorites-page.html',
-  styleUrl: './favorites-page.scss',
+  styleUrl: './favorites-page.scss'
 })
-export class FavoritesPage {}
+export class FavoritesPageComponent implements OnInit {
+  readonly productStore = inject(ProductStore);
+  readonly favoriteStore = inject(FavoriteStore);
+
+  readonly favoriteProducts = computed(() =>
+    this.productStore.products()
+      .filter(product => this.favoriteStore.isFavorite(product.id))
+  );
+
+  ngOnInit(): void {
+    this.productStore.loadProducts();
+  }
+
+  toggleFavorite(productId: string): void {
+    this.favoriteStore.toggleFavorite(productId);
+  }
+}

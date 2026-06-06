@@ -1,0 +1,13 @@
+[
+  {
+    "id": "bag-001",
+    "name": "Cartera artesanal de cuero",
+    "description": "Cartera hecha a mano con cuero natural.",
+    "price": 180,
+    "imageUrl": "assets/images/products/bag-001.jpg",
+    "category": "Carteras",
+    "material": "Cuero",
+    "stock": 5,
+    "isFeatured": true
+  }
+]
