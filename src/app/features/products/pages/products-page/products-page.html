@@ -1,19 +1,41 @@
-<!-- <h1>Productos</h1> -->
+<h1>Productos</h1>
 
-<!-- @if (productStore.loading()) {
-  <p>Cargando...</p>
+<app-product-filters
+  [searchTerm]="productStore.searchTerm()"
+  [selectedCategory]="productStore.selectedCategory()"
+  [categories]="productStore.categories()"
+  (searchTermChange)="productStore.setSearchTerm($event)"
+  (categoryChange)="productStore.setSelectedCategory($event)"
+  (clearFilters)="productStore.clearFilters()"
+/>
+
+@if (productStore.loading()) {
+  <div class="page-state">
+    <p>Cargando productos...</p>
+  </div>
 }
 
 @if (productStore.error()) {
-  <p>{{ productStore.error() }}</p>
-} -->
-
-<h1>Productos</h1>
-
-@for (product of productStore.products(); track product.id) {
-  <app-product-card
-    [product]="product"
-    [isFavorite]="favoriteStore.isFavorite(product.id)"
-    (favorite)="toggleFavorite($event)"
-  />
+  <div class="page-state page-state--error">
+    <p>{{ productStore.error() }}</p>
+  </div>
 }
+
+@if (!productStore.loading() && productStore.filteredProducts().length === 0) {
+  <div class="page-state">
+    <p>No se encontraron productos.</p>
+    <button type="button" (click)="productStore.clearFilters()">
+      Limpiar filtros
+    </button>
+  </div>
+}
+
+<section class="products-grid">
+  @for (product of productStore.filteredProducts(); track product.id) {
+    <app-product-card
+      [product]="product"
+      [isFavorite]="favoriteStore.isFavorite(product.id)"
+      (favorite)="toggleFavorite($event)"
+    />
+  }
+</section>

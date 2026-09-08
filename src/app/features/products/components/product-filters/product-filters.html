@@ -1,0 +1,31 @@
+<section class="product-filters">
+  <div class="product-filters__field">
+    <label for="search">Buscar</label>
+    <input
+      id="search"
+      type="text"
+      placeholder="Buscar cartera..."
+      [ngModel]="searchTerm()"
+      (ngModelChange)="onSearchTermChange($event)"
+    />
+  </div>
+
+  <div class="product-filters__field">
+    <label for="category">Categoría</label>
+    <select
+      id="category"
+      [ngModel]="selectedCategory()"
+      (ngModelChange)="onCategoryChange($event)"
+    >
+      <option [ngValue]="null">Todas</option>
+
+      @for (category of categories(); track category) {
+        <option [value]="category">{{ category }}</option>
+      }
+    </select>
+  </div>
+
+  <button type="button" (click)="onClearFilters()">
+    Limpiar
+  </button>
+</section>

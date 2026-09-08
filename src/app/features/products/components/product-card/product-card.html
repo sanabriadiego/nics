@@ -1,12 +1,42 @@
-<p>product-card works!</p>
 <article class="product-card">
-  <img [src]="product().imageUrl" [alt]="product().name">
+  <div class="product-card__image-wrapper">
+    <img
+      class="product-card__image"
+      [src]="product().imageUrl"
+      [alt]="product().name"
+    />
 
-  <h3>{{ product().name }}</h3>
-  <p>{{ product().description }}</p>
-  <strong>{{ product().price }} Bs</strong>
+    <button
+      class="product-card__favorite"
+      type="button"
+      (click)="onToggleFavorite()"
+      [attr.aria-label]="isFavorite() ? 'Quitar de favoritos' : 'Agregar a favoritos'"
+    >
+      {{ isFavorite() ? '♥' : '♡' }}
+    </button>
+  </div>
 
-<button type="button" (click)="onToggleFavorite()">
-  {{ isFavorite() ? 'Quitar de favoritos' : 'Agregar a favoritos' }}
-</button>
+  <div class="product-card__content">
+    <span class="product-card__category">
+      {{ product().category }}
+    </span>
+
+    <h3 class="product-card__title">
+      {{ product().name }}
+    </h3>
+
+    <p class="product-card__description">
+      {{ product().description }}
+    </p>
+
+    <div class="product-card__footer">
+      <strong class="product-card__price">
+        {{ product().price }} Bs
+      </strong>
+
+      <span class="product-card__stock">
+        Stock: {{ product().stock }}
+      </span>
+    </div>
+  </div>
 </article>

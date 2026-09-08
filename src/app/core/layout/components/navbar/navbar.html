@@ -1,6 +1,23 @@
-<nav>
-  <a routerLink="/">Home</a>
-  <a routerLink="/products">Productos</a>
-  <a routerLink="/favorites">Favoritos</a>
-  <a routerLink="/contact">Contacto</a>
-</nav>
+<header class="navbar">
+  <a class="navbar__brand" routerLink="/">
+    NICS
+  </a>
+
+  <nav class="navbar__links">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      Inicio
+    </a>
+
+    <a routerLink="/products" routerLinkActive="active">
+      Productos
+    </a>
+
+    <a routerLink="/favorites" routerLinkActive="active">
+      Favoritos
+    </a>
+
+    <a routerLink="/contact" routerLinkActive="active">
+      Contacto
+    </a>
+  </nav>
+</header>

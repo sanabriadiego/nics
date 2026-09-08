@@ -1,13 +1,24 @@
 [
   {
     "id": "bag-001",
-    "name": "Cartera artesanal de cuero",
-    "description": "Cartera hecha a mano con cuero natural.",
-    "price": 180,
-    "imageUrl": "assets/images/products/bag-001.jpg",
+    "name": "Petunia Bag",
+    "description": "Cartera hecha a mano con trapillo.",
+    "price": 200,
+    "imageUrl": "/assets/images/products/bag-001.jpeg",
     "category": "Carteras",
-    "material": "Cuero",
+    "material": "Trapillo",
     "stock": 5,
+    "isFeatured": true
+  },
+  {
+    "id": "bag-002",
+    "name": "Valentine Bag",
+    "description": "Cartera hecha a mano con trapillo.",
+    "price": 240,
+    "imageUrl": "/assets/images/products/bag-002.jpeg",
+    "category": "Carteras",
+    "material": "Trapillo",
+    "stock": 3,
     "isFeatured": true
   }
 ]

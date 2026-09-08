@@ -2,11 +2,12 @@ import { Component, computed, inject, OnInit } from '@angular/core';
 import { ProductCardComponent } from '../../../products/components/product-card/product-card';
 import { ProductStore } from '../../../products/store/product.store';
 import { FavoriteStore } from '../../store/favorite.store/favorite.store';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-favorites-page',
   standalone: true,
-  imports: [ProductCardComponent],
+  imports: [ProductCardComponent, RouterLink],
   templateUrl: './favorites-page.html',
   styleUrl: './favorites-page.scss'
 })

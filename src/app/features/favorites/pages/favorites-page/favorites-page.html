@@ -1,4 +1,4 @@
-<h1>Favoritos</h1>
+<!-- <h1>Favoritos</h1>
 
 @if (productStore.loading()) {
   <p>Cargando favoritos...</p>
@@ -13,6 +13,43 @@
 }
 
 <section>
+  @for (product of favoriteProducts(); track product.id) {
+    <app-product-card
+      [product]="product"
+      [isFavorite]="true"
+      (favorite)="toggleFavorite($event)"
+    />
+  }
+</section> -->
+
+
+<header class="favorites-header">
+  <div>
+    <h1>Mis favoritos</h1>
+    <p>Estos son los productos que guardaste para ver después.</p>
+  </div>
+</header>
+
+@if (productStore.loading()) {
+  <div class="page-state">
+    <p>Cargando favoritos...</p>
+  </div>
+}
+
+@if (productStore.error()) {
+  <div class="page-state page-state--error">
+    <p>{{ productStore.error() }}</p>
+  </div>
+}
+
+@if (!productStore.loading() && favoriteProducts().length === 0) {
+  <div class="page-state">
+    <p>Aún no tienes productos favoritos.</p>
+    <a routerLink="/products">Ver productos</a>
+  </div>
+}
+
+<section class="favorites-grid">
   @for (product of favoriteProducts(); track product.id) {
     <app-product-card
       [product]="product"
