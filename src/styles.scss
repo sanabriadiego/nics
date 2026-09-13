@@ -1,4 +1,32 @@
+@font-face {
+  font-family: 'DM Serif Display';
+  src: url('/assets/fonts/DMSerifDisplay-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geomini';
+  src: url('/assets/fonts/Geomini-Light.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Quiche Display';
+  src: url('/assets/fonts/QuicheDisplay-Regular.otf') format('opentype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
 :root {
+  --font-brand: 'DM Serif Display', Georgia, serif;
+  --font-body: 'Geomini', Arial, Helvetica, sans-serif;
+  --font-heading: 'Quiche Display', Georgia, serif;
+
   --color-primary: #8b5e3c;
   --color-primary-dark: #5f3f28;
   --color-secondary: #d8bfa7;
@@ -25,9 +53,20 @@
 
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  font-weight: 300;
   background: var(--color-background);
   color: var(--color-text);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 400;
 }
 
 img {
@@ -37,6 +76,7 @@ img {
 
 button,
 input,
-select {
+select,
+textarea {
   font: inherit;
 }

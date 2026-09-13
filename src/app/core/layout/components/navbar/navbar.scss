@@ -9,8 +9,9 @@
 }
 
 .navbar__brand {
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-family: var(--font-brand);
+  font-size: 2rem;
+  font-weight: 400;
   color: var(--color-primary-dark);
   text-decoration: none;
 }
