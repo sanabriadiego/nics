@@ -1,24 +1,74 @@
 [
   {
+    "id": "bag-grecia",
+    "name": "Grecia",
+    "category": "Carteras",
+    "imageUrl": "/assets/images/catalogo/grecia/grecia_portada.jpeg",
+    "hoverImageUrl": "/assets/images/catalogo/grecia/grecia1.jpeg"
+  },
+  {
+    "id": "bag-niki",
+    "name": "Niki",
+    "category": "Carteras",
+    "imageUrl": "/assets/images/catalogo/niki/niki_portada.jpeg",
+    "hoverImageUrl": "/assets/images/catalogo/niki/niki1.jpg"
+  },
+  {
+    "id": "bag-nina",
+    "name": "Nina",
+    "category": "Carteras",
+    "imageUrl": "/assets/images/catalogo/nina/nina_portada.jpeg",
+    "hoverImageUrl": "/assets/images/catalogo/nina/nina1.jpeg"
+  },
+  {
+    "id": "bag-paula",
+    "name": "Paula",
+    "category": "Carteras",
+    "imageUrl": "/assets/images/catalogo/paula/paula_portada.jpeg",
+    "hoverImageUrl": "/assets/images/catalogo/paula/paula1.jpeg"
+  },
+  {
     "id": "bag-001",
     "name": "Petunia Bag",
     "description": "Cartera hecha a mano con trapillo.",
     "price": 200,
-    "imageUrl": "/assets/images/products/bag-001.jpeg",
     "category": "Carteras",
     "material": "Trapillo",
     "stock": 5,
-    "isFeatured": true
+    "isFeatured": true,
+    "imageUrl": "/assets/images/catalogo/petunia/petunia_portada.jpeg",
+    "hoverImageUrl": "/assets/images/catalogo/petunia/petunia1.jpeg"
   },
   {
     "id": "bag-002",
     "name": "Valentine Bag",
     "description": "Cartera hecha a mano con trapillo.",
     "price": 240,
-    "imageUrl": "/assets/images/products/bag-002.jpeg",
     "category": "Carteras",
     "material": "Trapillo",
     "stock": 3,
-    "isFeatured": true
+    "isFeatured": true,
+    "imageUrl": "/assets/images/catalogo/valentine/valentine_portada.jpeg",
+    "hoverImageUrl": "/assets/images/catalogo/valentine/valentine1.jpeg"
+  },
+  {
+    "id": "bag-vicky",
+    "name": "Vicky",
+    "category": "Carteras",
+    "imageUrl": "/assets/images/catalogo/vicky/vicky_portada.jpeg",
+    "hoverImageUrl": "/assets/images/catalogo/vicky/vicky1.jpeg"
+  },
+  {
+    "id": "accessory-organizadores",
+    "name": "Organizadores",
+    "category": "Accesorios",
+    "imageUrl": "/assets/images/catalogo/accesorios/organizadores_portada.jpeg",
+    "hoverImageUrl": "/assets/images/catalogo/accesorios/organizadores1.jpeg"
+  },
+  {
+    "id": "accessory-portagafas",
+    "name": "Portagafas",
+    "category": "Accesorios",
+    "imageUrl": "/assets/images/catalogo/accesorios/portagafas.jpeg"
   }
 ]

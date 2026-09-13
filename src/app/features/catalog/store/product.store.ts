@@ -1,6 +1,6 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { ProductRepository } from '../repositories/product.repository';
-import { Product } from '../models/product';
+import { Product, ProductCategory } from '../models/product';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class ProductStore {
   private readonly errorSignal = signal<string | null>(null);
 
   private readonly searchTermSignal = signal('');
-  private readonly selectedCategorySignal = signal<string | null>(null);
+  private readonly selectedCategorySignal = signal<ProductCategory>('Carteras');
 
   readonly products = this.productsSignal.asReadonly();
   readonly loading = this.loadingSignal.asReadonly();
@@ -22,13 +22,7 @@ export class ProductStore {
   readonly searchTerm = this.searchTermSignal.asReadonly();
   readonly selectedCategory = this.selectedCategorySignal.asReadonly();
 
-  readonly categories = computed(() => {
-    const uniqueCategories = new Set(
-      this.products().map(product => product.category)
-    );
-
-    return Array.from(uniqueCategories);
-  });
+  readonly categories: ProductCategory[] = ['Carteras', 'Accesorios'];
 
   readonly filteredProducts = computed(() => {
     const searchTerm = this.searchTerm().toLowerCase().trim();
@@ -37,14 +31,13 @@ export class ProductStore {
     return this.products().filter(product => {
       const matchesSearch =
         product.name.toLowerCase().includes(searchTerm) ||
-        product.description.toLowerCase().includes(searchTerm);
+        (product.description ?? '').toLowerCase().includes(searchTerm);
 
       const matchesCategory =
-        selectedCategory === null ||
         product.category === selectedCategory;
 
       return matchesSearch && matchesCategory;
-    });
+    }).sort((a, b) => a.name.localeCompare(b.name, 'es'));
   });
 
   loadProducts(): void {
@@ -53,7 +46,7 @@ export class ProductStore {
 
     this.productRepository.getProducts().subscribe({
       next: products => {
-        this.productsSignal.set(products);
+        this.productsSignal.set(products.map(product => ({ ...product, isFeatured: product.isFeatured ?? false })));
         this.loadingSignal.set(false);
       },
       error: () => {
@@ -67,12 +60,12 @@ export class ProductStore {
     this.searchTermSignal.set(searchTerm);
   }
 
-  setSelectedCategory(category: string | null): void {
+  setSelectedCategory(category: ProductCategory): void {
     this.selectedCategorySignal.set(category);
+    this.clearFilters();
   }
 
   clearFilters(): void {
     this.searchTermSignal.set('');
-    this.selectedCategorySignal.set(null);
   }
 }

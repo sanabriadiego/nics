@@ -1,6 +1,6 @@
 import { Component, computed, inject, OnInit } from '@angular/core';
-import { ProductCardComponent } from '../../../products/components/product-card/product-card';
-import { ProductStore } from '../../../products/store/product.store';
+import { ProductCardComponent } from '../../../catalog/components/product-card/product-card';
+import { ProductStore } from '../../../catalog/store/product.store';
 import { FavoriteStore } from '../../store/favorite.store/favorite.store';
 import { RouterLink } from '@angular/router';
 

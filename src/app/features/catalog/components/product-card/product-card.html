@@ -1,0 +1,58 @@
+<article class="product-card">
+  <div class="product-card__image-wrapper"
+    [class.product-card__image-wrapper--ready]="!!product().hoverImageUrl && loadedHoverUrl() === product().hoverImageUrl">
+    <img
+      class="product-card__image"
+      [src]="product().imageUrl"
+      [alt]="product().name"
+    />
+    @if (product().hoverImageUrl; as hoverUrl) {
+      @for (url of [hoverUrl]; track url) {
+        <img class="product-card__image product-card__image--alternate"
+          [src]="url" alt="" aria-hidden="true"
+          (load)="loadedHoverUrl.set(url)" (error)="loadedHoverUrl.set(null)" />
+      }
+    }
+
+    <button
+      class="product-card__favorite"
+      type="button"
+      (click)="onToggleFavorite()"
+      [attr.aria-label]="isFavorite() ? 'Quitar de favoritos' : 'Agregar a favoritos'"
+    >
+      {{ isFavorite() ? '♥' : '♡' }}
+    </button>
+  </div>
+
+  <div class="product-card__content">
+    <span class="product-card__category">
+      {{ product().category }}
+    </span>
+
+    <h3 class="product-card__title">
+      {{ product().name }}
+    </h3>
+
+    @if (product().description) {
+      <p class="product-card__description">
+        {{ product().description }}
+      </p>
+    }
+
+    @if (product().price !== undefined || product().stock !== undefined) {
+      <div class="product-card__footer">
+        @if (product().price !== undefined) {
+          <strong class="product-card__price">
+            {{ product().price }} Bs
+          </strong>
+        }
+
+        @if (product().stock !== undefined) {
+          <span class="product-card__stock">
+            Stock: {{ product().stock }}
+          </span>
+        }
+      </div>
+    }
+  </div>
+</article>

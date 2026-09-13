@@ -1,9 +1,9 @@
-<h1>Productos</h1>
+<h1>Catálogo</h1>
 
 <app-product-filters
   [searchTerm]="productStore.searchTerm()"
   [selectedCategory]="productStore.selectedCategory()"
-  [categories]="productStore.categories()"
+  [categories]="productStore.categories"
   (searchTermChange)="productStore.setSearchTerm($event)"
   (categoryChange)="productStore.setSelectedCategory($event)"
   (clearFilters)="productStore.clearFilters()"
@@ -21,11 +21,11 @@
   </div>
 }
 
-@if (!productStore.loading() && productStore.filteredProducts().length === 0) {
+@if (!productStore.loading() && !productStore.error() && productStore.filteredProducts().length === 0) {
   <div class="page-state">
     <p>No se encontraron productos.</p>
     <button type="button" (click)="productStore.clearFilters()">
-      Limpiar filtros
+      Limpiar búsqueda
     </button>
   </div>
 }

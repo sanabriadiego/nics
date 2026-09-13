@@ -6,17 +6,18 @@ import { ProductFilters } from '../../components/product-filters/product-filters
 
 
 @Component({
-  selector: 'app-products-page',
+  selector: 'app-catalog-page',
   standalone: true,
   imports: [ProductCardComponent, ProductFilters],
-  templateUrl: './products-page.html',
-  styleUrl: './products-page.scss'
+  templateUrl: './catalog-page.html',
+  styleUrl: './catalog-page.scss'
 })
-export class ProductsPageComponent implements OnInit {
+export class CatalogPageComponent implements OnInit {
   readonly productStore = inject(ProductStore);
   readonly favoriteStore = inject(FavoriteStore);
 
   ngOnInit(): void {
+    this.productStore.setSelectedCategory('Carteras');
     this.productStore.loadProducts();
   }
 

@@ -1,0 +1,22 @@
+<section class="product-filters">
+  <div class="product-filters__categories" role="group" aria-label="Tipo de producto">
+    @for (category of categories(); track category) {
+      <button type="button" [attr.aria-pressed]="selectedCategory() === category"
+        (click)="onCategoryChange(category)">{{ category }}</button>
+    }
+  </div>
+  <div class="product-filters__field">
+    <label for="search">Buscar</label>
+    <input
+      id="search"
+      type="text"
+      placeholder="Buscar en el catálogo..."
+      [ngModel]="searchTerm()"
+      (ngModelChange)="onSearchTermChange($event)"
+    />
+  </div>
+
+  <button type="button" (click)="onClearFilters()">
+    Limpiar búsqueda
+  </button>
+</section>

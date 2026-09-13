@@ -9,9 +9,14 @@ export const routes: Routes = [
     },
     {
         path: 'products',
+        redirectTo: 'catalog',
+        pathMatch: 'full'
+    },
+    {
+        path: 'catalog',
         loadComponent: () =>
-        import('./features/products/pages/products-page/products-page')
-            .then(m => m.ProductsPageComponent)
+        import('./features/catalog/pages/catalog-page/catalog-page')
+            .then(m => m.CatalogPageComponent)
     },
     {
         path: 'favorites',

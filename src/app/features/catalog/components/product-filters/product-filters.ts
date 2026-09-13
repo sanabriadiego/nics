@@ -1,5 +1,6 @@
 import { Component, input, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ProductCategory } from '../../models/product';
 
 @Component({
   selector: 'app-product-filters',
@@ -9,19 +10,19 @@ import { FormsModule } from '@angular/forms';
 })
 export class ProductFilters {
   searchTerm = input<string>('');
-  selectedCategory = input<string | null>(null);
-  categories = input<string[]>([]);
+  selectedCategory = input<ProductCategory>('Carteras');
+  categories = input<ProductCategory[]>([]);
 
   searchTermChange = output<string>();
-  categoryChange = output<string | null>();
+  categoryChange = output<ProductCategory>();
   clearFilters = output<void>();
 
   onSearchTermChange(value: string): void {
     this.searchTermChange.emit(value);
   }
 
-  onCategoryChange(value: string): void {
-    this.categoryChange.emit(value || null);
+  onCategoryChange(value: ProductCategory): void {
+    this.categoryChange.emit(value);
   }
 
   onClearFilters(): void {

@@ -1,6 +1,6 @@
 .product-filters {
   display: grid;
-  grid-template-columns: 1fr 240px auto;
+  grid-template-columns: 1fr auto;
   gap: 16px;
   align-items: end;
   margin-bottom: 32px;
@@ -23,8 +23,7 @@ label {
   color: var(--color-muted);
 }
 
-input,
-select {
+input {
   height: 44px;
   padding: 0 14px;
   border: 1px solid var(--color-border);
@@ -56,4 +55,22 @@ button {
   .product-filters {
     grid-template-columns: 1fr;
   }
+}
+
+.product-filters__categories {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  button[aria-pressed='false'] {
+    background: var(--color-background);
+    color: var(--color-primary-dark);
+    border: 1px solid var(--color-border);
+  }
+}
+
+button:focus-visible {
+  outline: 2px solid var(--color-primary-dark);
+  outline-offset: 3px;
 }

@@ -8,7 +8,7 @@
   <p>{{ productStore.error() }}</p>
 }
 
-@if (!productStore.loading() && favoriteProducts().length === 0) {
+@if (!productStore.loading() && !productStore.error() && favoriteProducts().length === 0) {
   <p>No tienes productos favoritos todavía.</p>
 }
 
@@ -45,7 +45,7 @@
 @if (!productStore.loading() && favoriteProducts().length === 0) {
   <div class="page-state">
     <p>Aún no tienes productos favoritos.</p>
-    <a routerLink="/products">Ver productos</a>
+    <a routerLink="/catalog">Ver productos</a>
   </div>
 }
 
